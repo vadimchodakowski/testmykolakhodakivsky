@@ -4,8 +4,9 @@ agent any
         stage ('skript') {
             steps {
                 script {
-                    sh "git clone https://github.com/vadimchodakowski/Mikolaskript.git"
-                    dir('Mikolaskript') {
+                    //sh "rm -r Mikolaskript"
+                    sh "git clone https://github.com/vadimchodakowski/testmykolakhodakivsky.git"
+                    dir(testmykolakhodakivsky) {
                     sh "ls -la && pwd"
                     def mylambdas = sh(script: """ls -d */ | tr -d / | grep -v 'jenkins'""", returnStdout: true).trim()
                         def arroflambdas=[]
