@@ -4,16 +4,15 @@ agent any
         stage ('skript') {
             steps {
                 script {
-                    //sh "rm -r Mikolaskript"
+                    sh "rm -r Mikolaskript"
                     sh "git clone https://github.com/vadimchodakowski/testmykolakhodakivsky.git"
-                    dir(testmykolakhodakivsky) {
                     sh "ls -la && pwd"
                     def mylambdas = sh(script: """ls -d */ | tr -d / | grep -v 'jenkins'""", returnStdout: true).trim()
                         def arroflambdas=[]
                             mylambdas.split().each { 
                                 arroflambdas << it
                             }
-                    echo "${mylambdas}"
+                        echo "${mylambdas}"
                         for (int i = 0; i < arroflambdas.size(); i++) {
                             def pathTocodebase = "${arroflambdas[i]}"
                                 dir(pathTocodebase) {
@@ -22,7 +21,6 @@ agent any
                                     echo "deploying ${arroflambdas[i]}"
                                     sh "chmod 777 ./skript.sh"
                                     sh "./skript.sh"
-                            }
                         }
                     }
                 }
