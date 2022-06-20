@@ -4,7 +4,6 @@ agent any
         stage ('skript') {
             steps {
                 script {
-                    sh "rm -r Mikolaskript"
                     sh "git clone https://github.com/vadimchodakowski/Mikolaskript.git"
                     dir('Mikolaskript') {
                     sh "ls -la && pwd"
